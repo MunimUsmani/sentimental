@@ -1,20 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
+import { Toaster } from "sonner"
+import { AuthProvider } from "@/contexts/auth-context"
 import Navbar from "@/app/components/navbar"
 import Footer from "@/app/components/footer"
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins'
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Memory Sharing - Preserve Your Precious Moments",
-  description: "A platform for sharing and preserving memories through photos, blogs, and recipes",
-  keywords: ["memories", "photo gallery", "blog", "recipe book", "elderly", "family sharing"],
+  title: "Memory Sharing App",
+  description: "Share your memories with friends and family",
 }
 
 export default function RootLayout({
@@ -23,11 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.className} min-h-screen flex flex-col`}>
+    <html lang="en">
+      <body className={inter.className}>
+        <AuthProvider>
           <Navbar />
-          <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
+          <main className="container mx-auto py-8 px-4">{children}</main>
           <Footer />
+          <Toaster position="top-right" />
+        </AuthProvider>
       </body>
     </html>
   )
