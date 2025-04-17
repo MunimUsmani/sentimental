@@ -87,7 +87,7 @@ export default function BlogSection() {
   return (
     <section className="py-12">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold">Family Blog</h2>
+        <h2 className="text-3xl font-bold">Community Blogs</h2>
         <Button variant="outline" asChild>
           <Link href="/blog" className="flex items-center">
             View All Posts <ArrowRight className="ml-2 h-4 w-4" />

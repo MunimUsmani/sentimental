@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { PlusCircle, Clock, Utensils, ArrowRight } from "lucide-react"
+import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { PlusCircle, Download, Star } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Recipe Book - Memory Sharing",
@@ -13,57 +13,63 @@ export const metadata: Metadata = {
 const recipes = [
   {
     id: 1,
-    title: "Grandma's Apple Pie",
-    description: "A classic apple pie recipe passed down through generations",
-    prepTime: "30 mins",
-    cookTime: "45 mins",
+    title: "Grandma's Secret Recipes",
+    description: "A collection of timeless family recipes passed down through generations",
+    author: "Elizabeth Johnson",
+    rating: 4.8,
     category: "desserts",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl:
+      "https://images.unsplash.com/photo-1532499016263-f2c3e89de9cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
   },
   {
     id: 2,
-    title: "Sunday Pot Roast",
-    description: "A hearty pot roast perfect for family gatherings",
-    prepTime: "20 mins",
-    cookTime: "3 hours",
+    title: "Sunday Family Dinners",
+    description: "Hearty meals perfect for bringing the family together",
+    author: "Robert Wilson",
+    rating: 4.5,
     category: "mains",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl:
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
   },
   {
     id: 3,
-    title: "Summer Garden Salad",
-    description: "Fresh salad using vegetables from our garden",
-    prepTime: "15 mins",
-    cookTime: "0 mins",
+    title: "Garden to Table",
+    description: "Fresh recipes using vegetables from our family garden",
+    author: "Sarah Thompson",
+    rating: 4.7,
     category: "sides",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl:
+      "https://images.unsplash.com/photo-1576867757603-05b134ebc379?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
   },
   {
     id: 4,
-    title: "Homemade Bread",
-    description: "Simple and delicious homemade bread recipe",
-    prepTime: "2 hours",
-    cookTime: "45 mins",
+    title: "Artisan Bread Making",
+    description: "Master the art of homemade bread with our family techniques",
+    author: "Michael Brown",
+    rating: 4.9,
     category: "breads",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl:
+      "https://images.unsplash.com/photo-1588685232180-8bb64cb4837a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
   },
   {
     id: 5,
-    title: "Blueberry Muffins",
-    description: "Sweet and fluffy blueberry muffins for breakfast",
-    prepTime: "15 mins",
-    cookTime: "25 mins",
+    title: "Sweet Memories",
+    description: "Delightful desserts that have sweetened our family gatherings",
+    author: "Jennifer Adams",
+    rating: 4.6,
     category: "desserts",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl:
+      "https://images.unsplash.com/photo-1588685232180-8bb64cb4837a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
   },
   {
     id: 6,
-    title: "Chicken Soup",
-    description: "Comforting chicken soup for cold days",
-    prepTime: "20 mins",
-    cookTime: "1 hour",
+    title: "Comfort Food Classics",
+    description: "Recipes that warm the heart and bring comfort to any day",
+    author: "David Miller",
+    rating: 4.7,
     category: "mains",
-    imageUrl: "/placeholder.svg?height=200&width=400",
+    imageUrl:
+      "https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2329&q=80",
   },
 ]
 
@@ -72,40 +78,50 @@ export default function RecipesPage() {
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Recipe Book</h1>
-          <p className="text-muted-foreground">Our favorite family recipes</p>
+          <h1 className="text-3xl font-bold text-amber-800">Family Recipe Books</h1>
+          <p className="text-muted-foreground">Our collection of treasured family recipes</p>
         </div>
-        <Button asChild>
+        <Button className="bg-amber-600 hover:bg-amber-700" asChild>
           <Link href="/recipes/add">
-            <PlusCircle className="mr-2 h-4 w-4" /> Add Recipe
+            <PlusCircle className="mr-2 h-4 w-4" /> Add Recipe Book
           </Link>
         </Button>
       </div>
 
       <Tabs defaultValue="all">
-        <TabsList className="mb-6">
-          <TabsTrigger value="all">All Recipes</TabsTrigger>
-          <TabsTrigger value="mains">Main Dishes</TabsTrigger>
-          <TabsTrigger value="sides">Side Dishes</TabsTrigger>
-          <TabsTrigger value="desserts">Desserts</TabsTrigger>
-          <TabsTrigger value="breads">Breads</TabsTrigger>
+        <TabsList className="mb-6 bg-amber-50">
+          <TabsTrigger value="all" className="data-[state=active]:bg-amber-600 data-[state=active]:text-white">
+            All Books
+          </TabsTrigger>
+          <TabsTrigger value="mains" className="data-[state=active]:bg-amber-600 data-[state=active]:text-white">
+            Main Dishes
+          </TabsTrigger>
+          <TabsTrigger value="sides" className="data-[state=active]:bg-amber-600 data-[state=active]:text-white">
+            Side Dishes
+          </TabsTrigger>
+          <TabsTrigger value="desserts" className="data-[state=active]:bg-amber-600 data-[state=active]:text-white">
+            Desserts
+          </TabsTrigger>
+          <TabsTrigger value="breads" className="data-[state=active]:bg-amber-600 data-[state=active]:text-white">
+            Breads
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="all" className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
+              <RecipeBookCard key={recipe.id} recipe={recipe} />
             ))}
           </div>
         </TabsContent>
 
         {["mains", "sides", "desserts", "breads"].map((category) => (
           <TabsContent key={category} value={category} className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {recipes
                 .filter((recipe) => recipe.category === category)
                 .map((recipe) => (
-                  <RecipeCard key={recipe.id} recipe={recipe} />
+                  <RecipeBookCard key={recipe.id} recipe={recipe} />
                 ))}
             </div>
           </TabsContent>
@@ -115,31 +131,52 @@ export default function RecipesPage() {
   )
 }
 
-function RecipeCard({ recipe }: { recipe: any }) {
+function RecipeBookCard({ recipe }: { recipe: any }) {
   return (
-    <Card className="overflow-hidden">
-      <img src={recipe.imageUrl || "/placeholder.svg"} alt={recipe.title} className="w-full h-48 object-cover" />
-      <CardHeader>
-        <CardTitle>{recipe.title}</CardTitle>
-        <CardDescription>{recipe.description}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          <span className="flex items-center">
-            <Clock className="h-4 w-4 mr-1" /> Prep: {recipe.prepTime}
-          </span>
-          <span className="flex items-center">
-            <Utensils className="h-4 w-4 mr-1" /> Cook: {recipe.cookTime}
-          </span>
+    <Card className="overflow-hidden flex flex-col md:flex-row border-none shadow-lg hover:shadow-xl transition-shadow">
+      <div className="w-full md:w-2/5 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-800/20 to-transparent"></div>
+        <img
+          src={recipe.imageUrl || "/placeholder.svg"}
+          alt={recipe.title}
+          className="w-full h-full object-cover aspect-[3/4]"
+        />
+        <div className="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-2 py-1 rounded">
+          FAMILY RECIPE
         </div>
-      </CardContent>
-      <CardFooter>
-        <Button variant="ghost" className="w-full justify-between" asChild>
-          <Link href={`/recipes/${recipe.id}`}>
-            View Recipe <ArrowRight className="h-4 w-4 ml-2" />
-          </Link>
-        </Button>
-      </CardFooter>
+      </div>
+
+      <div className="w-full md:w-3/5 p-5 flex flex-col justify-between bg-white">
+        <div>
+          <h3 className="text-xl font-bold mb-2">{recipe.title}</h3>
+          <p className="text-gray-600 text-sm mb-3">{recipe.description}</p>
+
+          <div className="flex items-center text-sm text-gray-500 mb-4">
+            <span className="mr-1">By</span>
+            <span className="font-medium text-amber-800">{recipe.author}</span>
+          </div>
+
+          <div className="flex items-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className={`h-4 w-4 ${i < Math.floor(recipe.rating) ? "text-amber-500 fill-amber-500" : "text-gray-300"}`}
+              />
+            ))}
+            <span className="ml-2 text-sm font-medium">{recipe.rating}</span>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center">
+          <Button variant="outline" className="text-amber-700 border-amber-200 hover:bg-amber-50" asChild>
+            <Link href={`/recipes/${recipe.id}`}>View Recipes</Link>
+          </Button>
+
+          <Button variant="ghost" size="icon" className="text-amber-700 hover:bg-amber-50" title="Download Recipe Book">
+            <Download className="h-5 w-5" />
+          </Button>
+        </div>
+      </div>
     </Card>
   )
 }

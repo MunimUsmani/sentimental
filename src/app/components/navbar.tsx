@@ -26,7 +26,7 @@ const routes = [
   },
   {
     name: "Recipe Book",
-    path: "/recipes",
+    path: "/recipe",
     icon: Utensils,
   },
   {
