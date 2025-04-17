@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Camera, Book, Utensils, Mail } from 'lucide-react'
+import { ArrowRight, Camera, Book, Utensils, Mail } from "lucide-react"
 import RecentUpdates from "./components/recent-updates"
+import BlogSection from "./components/blog-section"
 
 export default function Home() {
   return (
@@ -10,14 +11,14 @@ export default function Home() {
       <section className="relative py-24 md:py-32 overflow-hidden">
         {/* Background Image with Warm Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
-            alt="Family sharing memories" 
+          <img
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+            alt="Family sharing memories"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-amber-900/80 via-amber-800/70 to-amber-700/80"></div>
         </div>
-        
+
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-md">
@@ -30,7 +31,12 @@ export default function Home() {
             <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white" asChild>
               <Link href="/gallery">Browse Memories</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-amber-200 text-amber-100 hover:bg-amber-800/30" asChild>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-amber-200 text-amber-100 hover:bg-amber-800/30"
+              asChild
+            >
               <Link href="/login">Join Our Family</Link>
             </Button>
           </div>
@@ -47,7 +53,11 @@ export default function Home() {
               <CardDescription>Browse through our collection of photos</CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button variant="ghost" className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50" asChild>
+              <Button
+                variant="ghost"
+                className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50"
+                asChild
+              >
                 <Link href="/gallery">
                   View Gallery <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
@@ -62,7 +72,11 @@ export default function Home() {
               <CardDescription>Read our stories and journal entries</CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button variant="ghost" className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50" asChild>
+              <Button
+                variant="ghost"
+                className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50"
+                asChild
+              >
                 <Link href="/blog">
                   Read Blog <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
@@ -77,7 +91,11 @@ export default function Home() {
               <CardDescription>Discover our favorite family recipes</CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button variant="ghost" className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50" asChild>
+              <Button
+                variant="ghost"
+                className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50"
+                asChild
+              >
                 <Link href="/recipes">
                   View Recipes <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
@@ -92,7 +110,11 @@ export default function Home() {
               <CardDescription>Get in touch with us</CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button variant="ghost" className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50" asChild>
+              <Button
+                variant="ghost"
+                className="w-full justify-between text-amber-700 hover:text-amber-800 hover:bg-amber-50"
+                asChild
+              >
                 <Link href="/contact">
                   Contact Us <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
@@ -101,6 +123,8 @@ export default function Home() {
           </Card>
         </div>
       </section>
+
+      <BlogSection />
 
       <RecentUpdates />
     </div>
