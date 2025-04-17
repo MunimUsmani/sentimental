@@ -1,79 +1,36 @@
+'use client'
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PlusCircle, Download, Star } from "lucide-react"
-
-export const metadata: Metadata = {
-  title: "Recipe Book - Memory Sharing",
-  description: "Discover our favorite family recipes",
-}
-
-const recipes = [
-  {
-    id: 1,
-    title: "Grandma's Secret Recipes",
-    description: "A collection of timeless family recipes passed down through generations",
-    author: "Elizabeth Johnson",
-    rating: 4.8,
-    category: "desserts",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532499016263-f2c3e89de9cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-  },
-  {
-    id: 2,
-    title: "Sunday Family Dinners",
-    description: "Hearty meals perfect for bringing the family together",
-    author: "Robert Wilson",
-    rating: 4.5,
-    category: "mains",
-    imageUrl:
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-  },
-  {
-    id: 3,
-    title: "Garden to Table",
-    description: "Fresh recipes using vegetables from our family garden",
-    author: "Sarah Thompson",
-    rating: 4.7,
-    category: "sides",
-    imageUrl:
-      "https://images.unsplash.com/photo-1576867757603-05b134ebc379?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-  },
-  {
-    id: 4,
-    title: "Artisan Bread Making",
-    description: "Master the art of homemade bread with our family techniques",
-    author: "Michael Brown",
-    rating: 4.9,
-    category: "breads",
-    imageUrl:
-      "https://images.unsplash.com/photo-1588685232180-8bb64cb4837a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-  },
-  {
-    id: 5,
-    title: "Sweet Memories",
-    description: "Delightful desserts that have sweetened our family gatherings",
-    author: "Jennifer Adams",
-    rating: 4.6,
-    category: "desserts",
-    imageUrl:
-      "https://images.unsplash.com/photo-1588685232180-8bb64cb4837a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-  },
-  {
-    id: 6,
-    title: "Comfort Food Classics",
-    description: "Recipes that warm the heart and bring comfort to any day",
-    author: "David Miller",
-    rating: 4.7,
-    category: "mains",
-    imageUrl:
-      "https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2329&q=80",
-  },
-]
-
+import { useEffect, useState } from "react"
+import RecipeModal from "@/app/components/RecipeModal"
+              
 export default function RecipesPage() {
+  const [recipes, setRecipes] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      const response = await fetch(`${process.env.NEXT_BASE_API_URL}/api/recipes`);
+      const data = await response.json();
+      setRecipes(data);
+    };
+    fetchRecipes();
+  }, []);
+
+  const handleAddRecipe = async (newRecipe) => {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/recipes`, {
+      method: "POST",
+      body: formData,
+    });
+
+    // Optionally, refetch recipes or update state
+    setRecipes((prev) => [...prev, newRecipe]); // Update local state
+  };
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -81,10 +38,8 @@ export default function RecipesPage() {
           <h1 className="text-3xl font-bold text-amber-800">Family Recipe Books</h1>
           <p className="text-muted-foreground">Our collection of treasured family recipes</p>
         </div>
-        <Button className="bg-amber-600 hover:bg-amber-700" asChild>
-          <Link href="/recipes/add">
-            <PlusCircle className="mr-2 h-4 w-4" /> Add Recipe Book
-          </Link>
+        <Button className="bg-amber-600 hover:bg-amber-700" onClick={() => setIsModalOpen(true)}>
+          <PlusCircle className="mr-2 h-4 w-4" /> Add Recipe
         </Button>
       </div>
 
@@ -127,6 +82,12 @@ export default function RecipesPage() {
           </TabsContent>
         ))}
       </Tabs>
+
+      <RecipeModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSubmit={handleAddRecipe} 
+      />
     </div>
   )
 }

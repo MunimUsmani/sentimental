@@ -1,9 +1,8 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Camera, Book, Utensils, Mail } from "lucide-react"
 import RecentUpdates from "./components/recent-updates"
-import BlogSection from "./components/blog-section"
+import BlogSection from "@/app/components/blog-section"
 
 export default function Home() {
   return (

@@ -20,33 +20,39 @@ export default function RecentUpdates() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <UpdateCard
-          icon={<Camera className="h-5 w-5" />}
-          title="New Photos Added"
-          description="5 new photos added to Family album"
-          date="2 hours ago"
-          link="/gallery"
-          image="https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
-          user="Sarah Johnson"
-        />
-        <UpdateCard
-          icon={<BookOpen className="h-5 w-5" />}
-          title="Our Trip to the Mountains"
-          description="We had an amazing weekend getaway to the mountains. The views were breathtaking and the kids loved it!"
-          date="Yesterday"
-          link="/blog/1"
-          image="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
-          user="Michael Thompson"
-        />
-        <UpdateCard
-          icon={<Utensils className="h-5 w-5" />}
-          title="Grandma's Apple Pie Recipe"
-          description="Finally sharing the secret family recipe that's been passed down for generations."
-          date="3 days ago"
-          link="/recipes/1"
-          image="https://images.unsplash.com/photo-1562007908-17c67e878c88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
-          user="Elizabeth Parker"
-        />
+        <Link href="/blog">
+          <UpdateCard
+            icon={<Camera className="h-5 w-5" />}
+            title="New Photos Added"
+            description="5 new photos added to Family album"
+            date="2 hours ago"
+            link="/gallery"
+            image="https://images.unsplash.com/photo-1609220136736-443140cffec6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+            user="Sarah Johnson"
+          />
+        </Link>
+        <Link href="/blog">
+          <UpdateCard
+            icon={<BookOpen className="h-5 w-5" />}
+            title="Our Trip to the Mountains"
+            description="We had an amazing weekend getaway to the mountains. The views were breathtaking and the kids loved it!"
+            date="Yesterday"
+            link="/blog/1"
+            image="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+            user="Michael Thompson"
+          />
+        </Link>
+        <Link href="/blog">
+          <UpdateCard
+            icon={<Utensils className="h-5 w-5" />}
+            title="Grandma's Apple Pie Recipe"
+            description="Finally sharing the secret family recipe that's been passed down for generations."
+            date="3 days ago"
+            link="/blog"
+            image="https://images.unsplash.com/photo-1562007908-17c67e878c88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+            user="Elizabeth Parker"
+          />
+        </Link>
       </div>
 
       <div className="flex justify-center mt-8">

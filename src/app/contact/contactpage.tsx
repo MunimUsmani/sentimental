@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 import { CheckCircle2, Mail, MapPin, MessageSquare, Phone, Send, User } from "lucide-react"
+import ContactForm from '@/app/components/ContactForm'
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -183,126 +184,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <Card className="border-amber-200 shadow-lg">
-            <form onSubmit={handleSubmit}>
-              <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl text-amber-800">Send a Message</CardTitle>
-                <CardDescription>
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-amber-800">
-                      First Name
-                    </Label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
-                      <Input
-                        id="firstName"
-                        placeholder="John"
-                        className="pl-10 border-amber-200 focus-visible:ring-amber-500"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-amber-800">
-                      Last Name
-                    </Label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
-                      <Input
-                        id="lastName"
-                        placeholder="Doe"
-                        className="pl-10 border-amber-200 focus-visible:ring-amber-500"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-amber-800">
-                    Email
-                  </Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="john.doe@example.com"
-                      className="pl-10 border-amber-200 focus-visible:ring-amber-500"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject" className="text-amber-800">
-                    Subject
-                  </Label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
-                    <Input
-                      id="subject"
-                      placeholder="Question about your website"
-                      className="pl-10 border-amber-200 focus-visible:ring-amber-500"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-amber-800">
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Write your message here..."
-                    className="min-h-[150px] border-amber-200 focus-visible:ring-amber-500"
-                    required
-                  />
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  type="submit"
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-white"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <span className="flex items-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    <span className="flex items-center">
-                      <Send className="mr-2 h-4 w-4" /> Send Message
-                    </span>
-                  )}
-                </Button>
-              </CardFooter>
-            </form>
+            <ContactForm />
           </Card>
         </div>
       </div>
