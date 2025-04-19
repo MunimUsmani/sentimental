@@ -68,12 +68,12 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" asChild className="hidden md:flex">
+          {/* <Button variant="ghost" size="sm" asChild className="hidden md:flex">
             <Link href="/login">
               <LogIn className="mr-2 h-4 w-4" />
               Login
             </Link>
-          </Button>
+          </Button> */}
 
           {/* Mobile Navigation */}
           <Sheet open={open} onOpenChange={setOpen}>
@@ -103,10 +103,7 @@ export default function Navbar() {
                   )
                 })}
                 <Button asChild className="mt-4">
-                  <Link href="/login" onClick={() => setOpen(false)}>
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Login
-                  </Link>
+                  
                 </Button>
               </div>
             </SheetContent>
