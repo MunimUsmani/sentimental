@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
+import Image from "next/image" 
 import Link from "next/link"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
